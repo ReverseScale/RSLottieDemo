@@ -10,7 +10,7 @@ Airbnb 最近开源了一个名叫 Lottie 的动画库,它能够同时支持 iOS
 
 | 名称 |1.列表页 |2.本地数据展示页 |3.线上数据展示页 |
 | ------------- | ------------- | ------------- | ------------- |
-| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/8870678.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/46246365.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/34650330.jpg) |
+| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/77792487.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/46246365.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-8-1/34650330.jpg) |
 | 描述 | 通过 storyboard 搭建基本框架 | 加载本地数据显示效果 | 加载网络数据显示效果 |
 
 
