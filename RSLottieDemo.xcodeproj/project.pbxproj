@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DD6D7B2E6A388757AFD9AE8 /* libPods-RSLottieDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6913DFD5CD835D3071F972 /* libPods-RSLottieDemoUITests.a */; };
+		34BE715A1F42CD7300630F64 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BE71591F42CD7300630F64 /* LoadingView.m */; };
+		34BE715C1F42D4DC00630F64 /* Voice.json in Resources */ = {isa = PBXBuildFile; fileRef = 34BE715B1F42D4DC00630F64 /* Voice.json */; };
 		34F6572A1F2714F700297AF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F657291F2714F700297AF4 /* main.m */; };
 		34F6572D1F2714F700297AF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F6572C1F2714F700297AF4 /* AppDelegate.m */; };
 		34F657301F2714F700297AF4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F6572F1F2714F700297AF4 /* ViewController.m */; };
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		1CCAE6BDB0223EA8B7E6CC59 /* Pods-RSLottieDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSLottieDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSLottieDemoTests/Pods-RSLottieDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		34BE71581F42CD7300630F64 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		34BE71591F42CD7300630F64 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		34BE715B1F42D4DC00630F64 /* Voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Voice.json; sourceTree = "<group>"; };
 		34F657251F2714F700297AF4 /* RSLottieDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSLottieDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F657291F2714F700297AF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34F6572B1F2714F700297AF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -139,6 +144,8 @@
 				34F6575C1F271BA200297AF4 /* TableViewController.m */,
 				34F6572E1F2714F700297AF4 /* ViewController.h */,
 				34F6572F1F2714F700297AF4 /* ViewController.m */,
+				34BE71581F42CD7300630F64 /* LoadingView.h */,
+				34BE71591F42CD7300630F64 /* LoadingView.m */,
 				34F657AB1F27333100297AF4 /* GuidePageView.h */,
 				34F657AC1F27333100297AF4 /* GuidePageView.m */,
 				34F657311F2714F700297AF4 /* Main.storyboard */,
@@ -181,6 +188,7 @@
 			children = (
 				34F657651F27257B00297AF4 /* DataBag */,
 				34F6575F1F27213200297AF4 /* empty_status.json */,
+				34BE715B1F42D4DC00630F64 /* Voice.json */,
 				34F657611F27235300297AF4 /* vr_animation.json */,
 				34F657621F27235300297AF4 /* vr_sickness.json */,
 			);
@@ -334,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34BE715C1F42D4DC00630F64 /* Voice.json in Resources */,
 				34F657631F27235300297AF4 /* vr_animation.json in Resources */,
 				34F657671F27258100297AF4 /* data.json in Resources */,
 				34F657381F2714F700297AF4 /* LaunchScreen.storyboard in Resources */,
@@ -504,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F657301F2714F700297AF4 /* ViewController.m in Sources */,
+				34BE715A1F42CD7300630F64 /* LoadingView.m in Sources */,
 				34F6572D1F2714F700297AF4 /* AppDelegate.m in Sources */,
 				34F6572A1F2714F700297AF4 /* main.m in Sources */,
 				34F657AD1F27333100297AF4 /* GuidePageView.m in Sources */,

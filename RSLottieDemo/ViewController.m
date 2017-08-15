@@ -9,9 +9,11 @@
 #import "ViewController.h"
 #import <Lottie/Lottie.h>
 #import "GuidePageView.h"
+#import "LoadingView.h"
 
-@interface ViewController ()
-
+@interface ViewController (){
+    LoadingView *loadView;
+}
 @end
 
 @implementation ViewController
@@ -19,15 +21,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"%ld", self.animationType);
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = [self naviTitleChoeseWithType:self.animationType];
     
-    if (self.animationType == 2) {
-        [self createGuidePageView];
-    } else {
-        [self setupAnimationView];
+    switch (self.animationType) {
+        case 2:
+            [self setupLoadingView];
+            break;
+        case 3:
+            [self createGuidePageView];
+            break;
+        default:
+            [self setupAnimationView];
+            break;
     }
+}
+- (void)setupLoadingView {
+    loadView = [LoadingView new];
+    loadView.frame = CGRectMake(0, 0, 250, 250);
+    loadView.center = self.view.center;
+    [self.view addSubview:loadView];
+    
+    // 延时操作
+    double delayInSeconds = 2.0;
+    __weak __typeof(self)weakSelf = self;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf dismissLoadingView];
+    });
+}
+- (void)dismissLoadingView {
+    loadView.hidden = YES;
 }
 - (void)setupAnimationView {
     LOTAnimationView* animationView = [self createAnimationView];
@@ -51,13 +78,14 @@
     return animationView;
 }
 - (void)createGuidePageView {
-    GuidePageView *guidePageView = [GuidePageView new];
-    guidePageView.frame = self.view.bounds;
-    [self.view addSubview:guidePageView];
-    
-    [guidePageView handlerAction:^(NSString *str) {
-        [guidePageView removeFromSuperview];
-    }];
+    [self alertView];
+//    GuidePageView *guidePageView = [GuidePageView new];
+//    guidePageView.frame = self.view.bounds;
+//    [self.view addSubview:guidePageView];
+//    
+//    [guidePageView handlerAction:^(NSString *str) {
+//        [guidePageView removeFromSuperview];
+//    }];
 }
 - (NSString *)naviTitleChoeseWithType:(NSInteger)type {
     switch (type) {
@@ -67,10 +95,20 @@
         case 1:
             return @"网络数据动画";
             break;
+        case 2:
+            return @"加载数据动画 加载页";
+            break;
         default:
             return @"本地数据动画 引导页";
             break;
     }
+}
+- (void)alertView {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"为避免版权纠纷，图片素材已清除" message:@"实现方法见GuidePageView" preferredStyle:UIAlertControllerStyleAlert];
+    // 添加按钮
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -33,21 +33,8 @@
 #pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-            [self pushViewControllerWithType:0];
-            break;
-        case 1:
-            [self pushViewControllerWithType:1];
-            break;
-        default:
-            [self pushViewControllerWithType:2];
-            break;
-    }
-}
-- (void)pushViewControllerWithType:(NSInteger)type {
     ViewController *animationVC = [ViewController new];
-    animationVC.animationType = type;
+    animationVC.animationType = indexPath.row;
     [self.navigationController pushViewController:animationVC animated:YES];
 }
 
