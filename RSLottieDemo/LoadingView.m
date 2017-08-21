@@ -7,49 +7,33 @@
 //
 
 #import "LoadingView.h"
-#import <Lottie/Lottie.h>
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 
 @interface LoadingView ()
-@property (nonatomic, strong) LOTAnimationView* animationView;
+@property (nonatomic, strong) LOTAnimationView *animationView;
+
 @property (nonatomic, strong) NSOperationQueue *queue;
 @end
 
 @implementation LoadingView
-
-#pragma mark 初始化方法
-//nib 创建会调用
-+ (void)initialize {
-    
++ (instancetype)shareManager {
+    static LoadingView *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
 }
 
-#pragma mark 代码创建
-//纯代码 创建会调用
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self initSubView];
-    }
-    return self;
-}
-
-#pragma mark nib创建
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    [self initSubView];
-}
-
-#pragma mark 初始化控件
-// 注意：该处不要给子控件设置frame与数据，可以在这里初始化子控件的属性
-- (void)initSubView {
-    // ...
-    [self setupAnimationView];
-}
 #pragma mark 控件布局
 // 设置子控件的frame
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    self.animationView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.animationView.frame = CGRectMake(0, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT /2);
+    self.animationView.center = self.center;
 }
 #pragma mark 懒加载
 - (NSOperationQueue *)queue {
@@ -59,6 +43,8 @@
     return _queue;
 }
 - (void)setupAnimationView {
+    self.backgroundColor = [UIColor clearColor];
+    
     self.animationView = [self createAnimationView];
     self.animationView.contentMode = UIViewContentModeScaleAspectFit;
     self.animationView.loopAnimation = YES;
@@ -67,6 +53,11 @@
     [self.animationView playWithCompletion:^(BOOL animationFinished) {
         NSLog(@"播放完毕");
     }];
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    [window addSubview:self];
+}
+- (void)dismissLoadingView {
+    self.hidden = YES;
 }
 - (LOTAnimationView *)createAnimationView {
     LOTAnimationView* animationView;

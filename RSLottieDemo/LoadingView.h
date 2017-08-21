@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Lottie/Lottie.h>
+
+#define LoadingManager [LoadingView shareManager]
 
 @interface LoadingView : UIView
-
++ (instancetype)shareManager;
+- (void)setupAnimationView;
+- (void)dismissLoadingView;
 @end
